@@ -4,7 +4,8 @@ from state import State
 from move import Move
 
 class Node:
-  def __init__(self, state: State, move: Move, parent):
+  def __init__(self, state: State, move: Move, number: int, parent):
+    self.name = "N%s" % number
     self.state = state
     self.move = move
     self.parent = parent
@@ -13,7 +14,11 @@ class Node:
     return self.state.equals(node2.state)
     
   def display(self):
-    print(self.move.desc)
+    print(self.name)
+    if(not self.parent == None):
+      print("Parent: ", self.parent.name)
+    if(not self.move == None):
+      print(self.move.desc)
     print("State: ")
     self.state.display()
 
